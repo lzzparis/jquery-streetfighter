@@ -1,33 +1,43 @@
 $(document).ready(function(){
 
+	// var status = $('.ryu-still').css("display") 
+
+var isCool = false;
 	$('.ryu').mouseenter(function(){
-		$('.ryu-still').hide();
-		$('.ryu-ready').show();
+		if(!isCool){
+			$('.ryu-still').hide();
+			$('.ryu-ready').show();
+		}
 	})
 	.mouseleave(function(){
-		$('.ryu-still').show();
-		$('.ryu-ready').hide();
+		if(!isCool){
+			$('.ryu-still').show();
+			$('.ryu-ready').hide();
+		}
 	})
   .mousedown(function() {
-		$('.ryu-throwing').show();
-		$('.ryu-ready').hide();
- // show hadouken and animate it to the right of the screen
- 		$('.hadouken').show().animate(
-			{'left':'1020px'},
-			500,
-			function () {
-				$(this).hide();
-				$(this).css('left',"550px");
-			}
-		);
+		if(!isCool){
+			$('.ryu-throwing').show();
+			$('.ryu-ready').hide();
+	 // show hadouken and animate it to the right of the screen
+	 		$('.hadouken').show().animate(
+				{'left':'1020px'},
+				500,
+				function () {
+					$(this).hide();
+					$(this).css('left',"550px");
+				}
+			);
+	 	}	
     // play hadouken sound
     playHadouken();
     })
   .mouseup(function() {
-    ('mouseup');
-		$('.ryu-throwing').hide();
-		$('.ryu-ready').show();
     // ryu goes back to his ready position
+  		if(!isCool){
+			$('.ryu-throwing').hide();
+			$('.ryu-ready').show();
+		}
   });
   
 
@@ -40,6 +50,8 @@ $(document).ready(function(){
  		$(".ryu-still").hide();
  		playSax();
  	}
+ 	isCool=true;
+
  })
  .keyup( function(event) {
  	if(event.which==88){
@@ -49,12 +61,9 @@ $(document).ready(function(){
  		$(".ryu-still").show();
  		 pauseSax();
  	}
+ 	isCool=false;
  });
 
- $(document).keypress(function(event) {
- 	if(event.which==88){
- 	}
- });
 
 
 });
