@@ -1,5 +1,6 @@
 body {
 	background-color: black;
+	box-sizing: border-box;
 }
 
 .main {
@@ -46,6 +47,19 @@ body {
   background-repeat: no-repeat;
 }
 
+.how-to-play{
+	text-align: center;
+	padding-top:2em;
+
+}
+
+.how-to-play p{
+	padding-right:3.5em;
+	line-height: 1.5em;
+	font-size:3em;
+	font-family:Bangers,sans-serif;
+
+}
 .hadouken {
   background-image: url('../images/hadouken.gif');
   width: 156px; 
